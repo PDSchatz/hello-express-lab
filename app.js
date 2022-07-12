@@ -1,4 +1,5 @@
 const Express = require('express')
+const path = require('path')
 const app = Express()
 const PORT = 4001
 
@@ -29,15 +30,33 @@ app.get('/babe', (req, res) => {
 */
 
 app.get('/:page', (req, res, next) => {
-  if(req.params.page === 'generator'){
+  if(req.path.includes('/generator/')){
     next()
   } else {
     res.send(responseHTML(req.path)).status(200)
   }
 })
 
-app.use((req,res,next) => {
-  console.log('this is the generator endpoint')
+app.get('/generator/', (req,res) => {
+//   res.send(
+// `<h1 style="color:red;">let's make you a page!</h1>
+//   <form action="./new_user" method="get">
+//     <input type="text" placeholder="Your name here" name="user_name">
+//   </form> 
+// `    
+//   ).status(200)
+
+res.sendFile(path.resolve('./lol.html'), () => {
+  console.log('file sent?')
+  res.status(200)
+})
+})
+
+app.get('/generator/new_user/', (req,res) => {
+  console.log('we gots a new user, and their name is: ', req.query)
+  res.send(
+`<h1>OMG HELLO, ${req.query.user_name}!!!</h1>`
+  )
 })
 
 app.listen(PORT, () => {
