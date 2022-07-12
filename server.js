@@ -21,7 +21,7 @@ app.get('/', (_, res) => {
 
 app.get('/:filename', (req, res) => {
   //! allegedly, res.render() takes a callback that is executed, but I could never get it work for error handling purposes...
-  res.render(`${req.params.filename}`)
+  res.render(req.params.filename)
   // * for reference, here's a recreation of what I tried:
   /*
   res.render(`${req.params.filename}`, (err, html) => {
