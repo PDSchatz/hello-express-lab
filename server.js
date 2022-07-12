@@ -8,9 +8,9 @@ const static = Express.static(`${__dirname}/public`, {
   //here we have to explicitly define '.html' as a default filetype for Express
   //otherwise, if we try to goto https://domain.com/example, Express will error out
   //and yell, "NO DEFAULT ENGINE WAS SET BLAH BLAH BLAH"
-  //because it's looking for a filex called "example", not "example.html"
+  //because it's looking for a file called "example", not "example.html"
   //defining this lets express try and append '.html' onto the requrest before erroring.
-  extensions: ['html']
+  extensions: ['html', 'ico']
 })
 
 app.use(static)
@@ -46,6 +46,7 @@ app.use((err, req, res, next) => {
     console.log(`oh noes, an error! \n ${err}`)
     res.status(500).send(`<h1>lmao the file ${req.path} could not found</h1>`)
   } else {
+    //we would only get here vis-a-vis an errant next() call
     res.status(404)
   }
 })
