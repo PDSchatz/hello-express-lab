@@ -24,10 +24,10 @@ app.get('/:filename', (req, res) => {
   res.render(`${req.params.filename}`)
   // * for reference, here's a recreation of what I tried:
   /*
-  res.render(`${req.params.filename}`, function(err, html){
+  res.render(`${req.params.filename}`, (err, html) => {
     if(err){
       console.log(err)
-      res.send(`<h1>file not found or whatever</h1>`)
+      res.send(`<h1>file not found or whatever</h1>`).status(404)
     } else {
       * I tried sticking a console.log here so that I could see it firing even when localhost/next.html was hit, but it just never ever fired...
       res.render(html)
