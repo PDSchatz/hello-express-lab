@@ -1,8 +1,8 @@
 {
-  "name": "hello-express",
   "version": "1.0.0",
   "description": "the hello express lab",
   "main": "app.js",
+  "name": "hello-express",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon"
@@ -14,5 +14,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PDSchatz/hello-express-lab.git"
   }
 }
