@@ -5,7 +5,8 @@
   "name": "hello-express",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "dev-fileserver": "nodemon server.js"
   },
   "author": "douglas",
   "license": "ISC",
