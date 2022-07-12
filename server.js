@@ -22,6 +22,18 @@ app.get('/', (_, res) => {
 app.get('/:filename', (req, res) => {
   //! allegedly, res.render() takes a callback that is executed, but I could never get it work for error handling purposes...
   res.render(`${req.params.filename}`)
+  // * for reference, here's a recreation of what I tried:
+  /*
+  res.render(`${req.params.filename}`, function(err, html){
+    if(err){
+      console.log(err)
+      res.send(`<h1>file not found or whatever</h1>`)
+    } else {
+      * I tried sticking a console.log here so that I could see it firing even when localhost/next.html was hit, but it just never ever fired...
+      res.render(html)
+    }
+  })
+  */
 })
   //here, we define a catch-all error handler
   //if Response.render() messes up (say, for instance, looking for a file that doesn't exist...)
